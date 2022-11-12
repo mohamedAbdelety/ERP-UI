@@ -8,7 +8,7 @@ import {
   OnDestroy,
   ChangeDetectionStrategy
 } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { FullCalendarComponent } from '@fullcalendar/angular';
@@ -38,11 +38,11 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
   public events: EventInput[];
   public currentDate: Date = new Date();
   public currentEvent: EventApi;
-  public eventForm: FormGroup;
+  public eventForm: UntypedFormGroup;
   public view: string = 'dayGridMonth';
   private draggable: Draggable;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: UntypedFormBuilder) { }
 
   public ngOnInit(): void {
     this.eventForm = this.fb.group({

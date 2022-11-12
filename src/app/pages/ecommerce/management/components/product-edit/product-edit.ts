@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Product, ProductsService } from '../../../products.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'product-edit',
@@ -11,13 +11,13 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class ProductEditComponent implements OnInit {
   @ViewChild('tagInput') tagInputRef: ElementRef;
   tag: string;
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   constructor(
     public productsService: ProductsService,
     private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) { }
 
   ngOnInit(): void {

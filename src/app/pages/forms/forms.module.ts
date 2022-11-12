@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { Autosize } from 'ng-autosize';
 import { NgxMaskModule } from 'ngx-mask'
 import { EditorModule } from '@tinymce/tinymce-angular';
@@ -23,7 +23,7 @@ import { WizardComponent } from './wizard/wizard.component';
 import { WidgsterModule } from '../../components/widgster/widgster.module';
 import { FileInputModule } from '../../components/file-input/file-input.module';
 
-export const routes = [
+export const routes: Routes = [
   { path: '', redirectTo: 'elements', pathMatch: 'full' },
   { path: 'elements', component: ElementsComponent },
   { path: 'validation', component: ValidationComponent },
