@@ -91,7 +91,6 @@
             "projectType": "application"
         }
     },
-    "defaultProject": "LightBlue",
     "schematics": {
         "@schematics/angular:component": {
             "prefix": "app",

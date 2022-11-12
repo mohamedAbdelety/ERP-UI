@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -29,7 +29,7 @@ import { ProductEditComponent } from './management/components/product-edit/produ
 import { LoaderModule } from '../../components/loader/loader.module';
 import { WidgsterModule } from '../../components/widgster/widgster.module';
 
-export const routes = [
+export const routes: Routes = [
   { path: 'product-grid', component: ProductGridComponent, pathMatch: 'full' },
   { path: 'product', component: ProductDetailComponent, pathMatch: 'full' },
   { path: 'product/:id', component: ProductDetailComponent, pathMatch: 'full' },

@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter, OnDestroy } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -238,7 +238,7 @@ export class MailListComponent implements OnInit, OnDestroy {
   @Input() folderName: any;
   public mails: Mail[] = [...MAILS];
   public searchText: string = '';
-  public checkAll: FormControl = new FormControl(false);
+  public checkAll: UntypedFormControl = new UntypedFormControl(false);
 
   private destroySource: Subject<boolean> = new Subject();
 

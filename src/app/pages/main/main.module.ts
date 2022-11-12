@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { TrendModule } from 'ngx-trend';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { NgApexchartsModule } from 'ng-apexcharts';
@@ -28,7 +28,7 @@ import { CustomDateFormatter } from './visits/custom-date-formatter.service';
 import { WidgsterModule } from '../../components/widgster/widgster.module';
 import { UtilsModule } from '../../utils/utils-module/utils.module';
 
-export const routes = [
+export const routes: Routes = [
   { path: '', redirectTo: 'visits', pathMatch: 'full' },
   { path: 'analytics', component: AnalyticsComponent, pathMatch: 'full' },
   { path: 'visits', component: VisitsComponent, pathMatch: 'full' },

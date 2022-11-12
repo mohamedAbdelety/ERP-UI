@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { NgWizardConfig, THEME, NgWizardService } from 'ng-wizard';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { countries } from './countries';
 
 @Component({
@@ -24,7 +24,7 @@ export class WizardComponent implements OnInit {
 
 
 
-  public form: FormGroup;
+  public form: UntypedFormGroup;
   public firstStepSubmited: boolean = false;
   public secondStepSubmited: boolean = false;
   public thirdStepSubmited: boolean = false;
@@ -34,7 +34,7 @@ export class WizardComponent implements OnInit {
 
   constructor(
     private ngWizardService: NgWizardService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) { }
 
   unmask(event) {

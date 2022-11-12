@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { isURLValidator } from './validators/is-url.validator';
 import { arePasswordsEqual } from './validators/are-passwords-equal.validator';
 
@@ -10,10 +10,10 @@ import { arePasswordsEqual } from './validators/are-passwords-equal.validator';
   styleUrls: ['./validation.style.scss']
 })
 export class ValidationComponent implements OnInit {
-  public form: FormGroup;
+  public form: UntypedFormGroup;
   public submitted: boolean = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: UntypedFormBuilder) { }
 
   public ngOnInit() {
     this.form = this.fb.group({

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { InboxComponent } from './inbox.component';
@@ -12,7 +12,7 @@ import { SearchPipe } from './mail-list/pipes/search-pipe';
 import { FoldersPipe } from './mail-list/pipes/folders-pipe';
 import { UtilsModule } from '../../utils/utils-module/utils.module';
 
-export const routes = [
+export const routes: Routes = [
   { path: '', component: InboxComponent, pathMatch: 'full' }
 ];
 
