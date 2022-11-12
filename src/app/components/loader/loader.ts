@@ -1,10 +1,11 @@
-import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
+import {Component, Input} from '@angular/core';
+
+import 'widgster';
 
 @Component({
   selector: 'loader',
   templateUrl: './loader.html',
-  styleUrls: ['./loader.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./loader.scss']
 })
 
 export class LoaderComponent {
