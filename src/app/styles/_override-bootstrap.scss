@@ -2,7 +2,7 @@
 /*         Reset           */
 /***************************/
 
-a:focus{
+a:focus {
   outline: none;
 }
 
@@ -10,7 +10,8 @@ a:focus{
 /*          Type           */
 /***************************/
 
-ul, ol {
+ul,
+ol {
   margin: 0;
 }
 
@@ -18,14 +19,14 @@ hr {
   border-top: none;
 }
 
-blockquote{
+blockquote {
   border-width: 5px;
 
-  &.blockquote-sm{
+  &.blockquote-sm {
     padding: 0 0 0 15px;
     font-size: $font-size-base;
   }
-  p{
+  p {
     font-size: inherit;
     margin-bottom: $spacer / 2;
   }
@@ -53,11 +54,25 @@ h6,
   }
 }
 
-.text-primary        { color: theme-color('primary'); }
-.text-warning        { color: theme-color('warning'); }
-.text-danger         { color: theme-color('danger'); }
-.text-success        { color: theme-color('success'); }
-.text-info           { color: theme-color('info'); }
+.text-primary {
+  color: theme-color("primary");
+}
+.text-warning {
+  color: theme-color("warning");
+}
+.text-danger {
+  color: theme-color("danger");
+}
+.text-success {
+  color: theme-color("success");
+}
+.text-info {
+  color: theme-color("info");
+}
+
+.text-dark-light {
+  color: theme-color("dark-light");
+}
 
 @media (min-width: 768px) {
   .lead {
@@ -99,7 +114,7 @@ textarea {
   font-weight: $font-weight-base;
 }
 
-legend small{
+legend small {
   color: $text-muted;
   font-size: 14px;
 }
@@ -108,8 +123,8 @@ textarea.form-control {
   height: auto;
 }
 
-.form-control{
-  transition: border linear .2s, box-shadow linear .2s;
+.form-control {
+  transition: border linear 0.2s, box-shadow linear 0.2s;
   height: $input-height;
 
   &.form-control-lg {
@@ -120,11 +135,13 @@ textarea.form-control {
     height: $input-height-sm;
   }
 
-  &[type=search], &.search{
+  &[type="search"],
+  &.search {
     padding-left: 26px;
   }
 
-  &, &:focus {
+  &,
+  &:focus {
     box-shadow: none;
   }
 }
@@ -136,12 +153,14 @@ input[type="checkbox"]:focus {
   outline: none;
 }
 
-.input-group-btn > .btn, .btn-group > .btn {
+.input-group-btn > .btn,
+.btn-group > .btn {
   z-index: 3;
   height: 100%;
 }
 
-.input-group-btn:not(:first-child) > .btn, .input-group-btn:not(:first-child) > .btn-group {
+.input-group-btn:not(:first-child) > .btn,
+.input-group-btn:not(:first-child) > .btn-group {
   z-index: 3;
 }
 
@@ -178,17 +197,18 @@ legend {
   line-height: inherit;
   color: $legend-color;
   border: 0;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $dark-blue;
   font-size: 19.5px;
   font-weight: $font-weight-normal;
 }
 
-.search-query, .navbar-form .search-query{
+.search-query,
+.navbar-form .search-query {
   border-radius: $border-radius-base;
   line-height: $spacer;
 }
 
-.form-horizontal{
+.form-horizontal {
   input,
   select,
   textarea,
@@ -201,8 +221,8 @@ legend {
   }
 }
 
-.form-group{
-  margin-bottom: $form-group-margin-bottom;   //~18px
+.form-group {
+  margin-bottom: $form-group-margin-bottom; //~18px
 }
 
 .form-horizontal.form-label-left {
@@ -221,17 +241,18 @@ legend {
 
   .btn {
     background-clip: border-box;
+    border: none;
   }
 }
 
 .input-group-addon {
   color: $text-muted;
 
-  .input-group-lg & > *{
+  .input-group-lg & > * {
     line-height: $line-height-lg;
   }
 
-  .input-group-sm & > *{
+  .input-group-sm & > * {
     line-height: $line-height-sm;
   }
 }
@@ -252,14 +273,15 @@ legend {
 /*        Tables        */
 /***************************/
 
-.table .table{
+.table .table {
   background-color: $bg-addition;
 }
 
 .table-hover {
   tbody {
-    td, th{
-      @include transition(background-color .2s);
+    td,
+    th {
+      @include transition(background-color 0.2s);
     }
   }
 }
@@ -267,25 +289,25 @@ legend {
 .table.table-striped,
 .table.table-hover {
   thead > tr > th,
-  tfoot > tr > td{
+  tfoot > tr > td {
     border-top: none;
   }
 }
 
 .table-striped {
   tbody tr:nth-child(odd) {
-    background-color: $bg-addition;
+    background-color: $table-line-color;
   }
 }
 
-.table thead > tr > th{
+.table thead > tr > th {
   border-bottom: none;
   font-weight: 600;
   text-transform: uppercase;
   border-bottom-width: 1px;
 }
 
-.table > thead > tr > th{
+.table > thead > tr > th {
   font-weight: $font-weight-semi-bold;
   text-transform: uppercase;
   border-bottom-width: 1px;
@@ -317,12 +339,11 @@ legend {
   }
 }
 
-
 /***************************/
 /*        Dropdowns        */
 /***************************/
 
-.dropdown-toggle{
+.dropdown-toggle {
   &:after {
     font-family: LineAwesome, sans-serif;
     content: "\F110";
@@ -330,7 +351,7 @@ legend {
     width: auto;
     height: auto;
     vertical-align: baseline;
-    opacity: .8;
+    opacity: 0.8;
     font-size: 85%;
   }
 
@@ -339,11 +360,11 @@ legend {
   }
 }
 
-.dropdown-menu{
+.dropdown-menu {
   border-radius: $border-radius-lg;
 
   & > li > a {
-    color: $white;
+    color: $white !important;
     font-weight: $font-weight-base;
   }
 }
@@ -354,7 +375,7 @@ legend {
   }
 
   &.show .nav-link.dropdown-toggle {
-    background-color: $widget-bg-color;
+    background-color: $table-line-color;
     color: $white;
   }
 }
@@ -363,15 +384,16 @@ legend {
 /*      Buttons            */
 /***************************/
 
-.dropdown-toggle::after {
-  font-family: LineAwesome, sans-serif;
-  content: "\F110";
+.dropdown-toggle:after {
+  font-family: "Line Awesome Free";
+  content: "\f107";
   border: none;
   width: auto;
   height: auto;
   vertical-align: baseline;
-  opacity: .8;
+  opacity: 0.8;
   font-size: 85%;
+  font-weight: 900;
 }
 
 .btn-link {
@@ -381,17 +403,17 @@ legend {
 }
 
 .btn-secondary {
-  border-color: $gray-400;
   color: $gray-800;
 }
 
 .btn-success,
 .btn-info,
+.btn-danger,
 .btn-warning {
-  color: $white;
+  color: $light-blue;
 
   &:hover {
-    color: $white;
+    color: $light-blue;
   }
 }
 
@@ -400,9 +422,51 @@ legend {
   color: $gray-700;
 }
 
+.btn-outline-gray {
+  &:hover {
+    color: $darkness-blue;
+  }
+}
+
+.btn-outline-inverse {
+  &:hover {
+    color: #1C2531;
+  }
+}
+.btn-outline-default {
+  &:hover {
+    color: #1C2531;
+  }
+}
+
 .btn-default {
-  border-color: $gray-400;
-  color: $gray-800;
+  color: $white;
+  background: #4e6381;
+  border: none;
+
+  &:hover {
+    color: $white;
+    background: #4e6381;
+    border: none;
+  }
+
+  &:active,
+  .show > &.dropdown-toggle {
+    background: #4e6381;
+    border: none;
+  }
+
+  &.active {
+    background: #36455A;
+  }
+
+  &:disabled {
+    background: #4e6381;
+  }
+
+  &.disabled {
+    background: #4e6381;
+  }
 }
 
 .btn-xs {
@@ -474,6 +538,16 @@ legend {
   }
 }
 
+.close {
+  color: white;
+  opacity: 1;
+  font-weight: lighter;
+}
+
+.modal-header .close {
+  color: $black;
+}
+
 /***************************/
 /*      Button Groups      */
 /***************************/
@@ -503,7 +577,6 @@ legend {
     margin-left: 5px;
   }
 }
-
 
 /***************************/
 /*          Navs           */
@@ -556,7 +629,7 @@ legend {
   border-bottom-right-radius: $widget-border-radius;
 
   > .tab-pane {
-    padding: $spacer*2;
+    padding: $spacer * 2;
   }
 }
 
@@ -564,7 +637,7 @@ legend {
 /*         Navbars         */
 /***************************/
 
-.navbar{
+.navbar {
   margin: 0;
 
   .btn-navbar {
@@ -585,7 +658,7 @@ legend {
   margin: ($navbar-padding-y / 2) -$navbar-padding-x;
 
   > li > a {
-    padding-top:    10px;
+    padding-top: 10px;
     padding-bottom: 10px;
     line-height: $spacer;
   }
@@ -608,18 +681,18 @@ legend {
 /*       Breadcrumbs       */
 /***************************/
 
-.breadcrumb{
+.breadcrumb {
   padding-left: 0;
 
-  a{
+  a {
     color: $breadcrumb-color;
     text-decoration: none;
-    &:hover{
+    &:hover {
       color: $breadcrumb-active-color;
     }
   }
 
-  .content > &{
+  .content > & {
     padding-left: 0;
     padding-right: 0;
     margin-top: 11px;
@@ -634,13 +707,13 @@ legend {
 /***************************/
 /*        Pagination       */
 /***************************/
-.pagination{
+.pagination {
   font-weight: $font-weight-normal;
 
   > li {
     display: inline; // Remove list-style and block-level defaults
     > a,
-    > span{
+    > span {
       border-radius: $border-radius-base;
       margin: 0 2px;
     }
@@ -669,12 +742,17 @@ legend {
   color: $gray-800;
   border-radius: $border-radius-base;
 
-  h1,h2,h3,h4,h5,h6{
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $gray-800;
   }
 }
 
-.modal-footer{
+.modal-footer {
   background-color: #f5f5f5;
 }
 
@@ -700,12 +778,18 @@ legend {
 /***************************/
 
 .popover {
-  &, .popover-body {
+  &,
+  .popover-body {
     color: $text-color;
   }
 
   border-radius: $border-radius-base;
-  h1,h2,h3,h4,h5,h6{
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: $text-color;
   }
 }
@@ -724,7 +808,7 @@ legend {
   box-shadow: none;
   padding: $thumbnail-padding;
 
-  .widget &{
+  .widget & {
     border: $thumbnail-border-width solid $thumbnail-border-color;
   }
 }
@@ -758,7 +842,6 @@ legend {
   }
 }
 
-
 /***************************/
 /*    Labels and badges    */
 /***************************/
@@ -766,21 +849,30 @@ legend {
 .label,
 .badge {
   display: inline-block;
+  color: $light-blue !important;
   padding: 4px;
   text-shadow: none;
   font-weight: $font-weight-semi-bold;
   font-size: 11px;
 }
 
+.badge-table {
+  border-radius: 0.25rem;
+}
+
 .badge-pill {
-  padding: 0.4em 0.6em;
+  padding: 0.4em 0.65em;
   font-weight: 700;
 }
 
 .badge-warning {
-  color: $white !important;
+  color: $light-blue !important;
 }
 
+.badge-secondary,
+.badge-dark {
+  color: $white !important;
+}
 
 /***************************/
 /*        Jumbotron        */
@@ -803,84 +895,99 @@ legend {
 
   button.close {
     font-weight: 300;
-    color: #fff;
+    color: $light-blue;
     font-size: 18px;
     text-shadow: none;
     opacity: 1;
     outline: none;
-    @include transition(opacity .2s ease-out);
+    @include transition(opacity 0.2s ease-out);
   }
 }
 
-.alert-sm{
+.alert-sm {
   padding: 10px 12px;
   font-size: $font-size-sm;
 
-  .close{
+  .close {
     font-size: 18px;
   }
 }
 
 .alert-success {
-  background: theme-color('success');
-  color: $white;
+  background: theme-color("success");
+  color: $light-blue;
 
   &.alert-transparent {
-    color: theme-color('success');
-    background: rgba(theme-color('success'), $alert-transparent);
+    color: theme-color("success");
+    background: rgba(theme-color("success"), $alert-transparent);
+
+    & .close {
+      color: inherit;
+    }
   }
 
   .btn:not(.btn-default) {
-    background: rgba($white, 0.8);
-    color: theme-color('success');
+    background: rgba($light-blue, 0.8);
+    color: theme-color("success");
   }
 }
 
 .alert-info {
-  background: theme-color('info');
-  color: $white;
+  background: theme-color("info");
+  color: $light-blue;
 
   &.alert-transparent {
-    color: theme-color('info');
-    background: rgba(theme-color('info'), $alert-transparent);
+    color: theme-color("info");
+    background: rgba(theme-color("info"), $alert-transparent);
+
+    & .close {
+      color: inherit;
+    }
   }
 
   .btn:not(.btn-default) {
-    background: rgba($white, 0.8);
-    color: theme-color('info');
+    background: rgba($light-blue, 0.8);
+    color: theme-color("info");
   }
 }
 
 .alert-warning {
-  background: theme-color('warning');
-  color: $white;
+  background: theme-color("warning");
+  color: $light-blue;
 
   &.alert-transparent {
-    color: theme-color('warning');
-    background: rgba(theme-color('warning'), $alert-transparent);
+    color: theme-color("warning");
+    background: rgba(theme-color("warning"), $alert-transparent);
+
+    & .close {
+      color: inherit;
+    }
   }
 
   .btn:not(.btn-default) {
-    background: rgba($white, 0.8);
-    color: theme-color('warning');
+    background: rgba($light-blue, 0.8);
+    color: theme-color("warning");
   }
 }
 
 .alert-danger {
-  background: theme-color('danger');
-  color: $white;
+  background: theme-color("danger");
+  color: $light-blue;
 
   &.alert-transparent {
-    color: theme-color('danger');
-    background: rgba(theme-color('danger'), $alert-transparent);
+    color: theme-color("danger");
+    background: rgba(theme-color("danger"), $alert-transparent);
+
+    & .close {
+      color: inherit;
+    }
   }
 
   .btn:not(.btn-default) {
-    background: rgba($white, 0.8);
-    color: theme-color('danger');
+    background: rgba($light-blue, 0.8);
+    color: theme-color("danger");
   }
 }
-
 
 /***************************/
 /*        List Groups      */
@@ -928,14 +1035,12 @@ legend {
   }
 }
 
-
 /***************************/
 /*         Progress        */
 /***************************/
 
 .progress {
   border-radius: 0.25rem;
-  background: rgba(black, .15);
   margin-bottom: $form-group-margin-bottom;
   box-shadow: $progress-box-shadow;
 
@@ -944,7 +1049,7 @@ legend {
     transition: width 0.4s ease-in-out;
     height: $progress-height;
   }
-  @include progress-variant(theme-color('primary'));
+  @include progress-variant(theme-color("primary"));
 }
 
 .progress-sm {
@@ -959,11 +1064,11 @@ legend {
   height: $progress-height-xs;
 }
 
-@include bg-variant('.bg-success', theme-color('success'));
-@include bg-variant('.bg-info', theme-color('info'));
-@include bg-variant('.bg-warning', theme-color('warning'));
-@include bg-variant('.bg-danger', theme-color('danger'));
-@include bg-variant('.bg-inverse', $widget-color);
+@include bg-variant(".bg-success", theme-color("success"));
+@include bg-variant(".bg-info", theme-color("info"));
+@include bg-variant(".bg-warning", theme-color("warning"));
+@include bg-variant(".bg-danger", theme-color("danger"));
+@include bg-variant(".bg-inverse", $widget-color);
 
 .bg-inverse {
   color: $widget-bg-color;
@@ -973,17 +1078,18 @@ legend {
 /*        Carousel         */
 /***************************/
 
-.carousel{
-  .widget > &{
+.carousel {
+  .widget > & {
     margin: 0 (-($widget-padding-horizontal)) 5px;
   }
 }
 
 .carousel-control {
-  &.left, &.right{
+  &.left,
+  &.right {
     background: none;
   }
-  i{
+  i {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -996,11 +1102,11 @@ legend {
   }
 }
 
-.carousel-indicators{
-  &.outer{
+.carousel-indicators {
+  &.outer {
     bottom: -10px;
   }
-  li{
+  li {
     background-color: $gray-600;
 
     &.active {
@@ -1008,7 +1114,6 @@ legend {
     }
   }
 }
-
 
 /***************************/
 /*          Wells          */
@@ -1023,7 +1128,7 @@ legend {
   border-radius: $border-radius-base;
   blockquote {
     border-color: $gray-light;
-    border-color: rgba(0,0,0,.15);
+    border-color: rgba(0, 0, 0, 0.15);
   }
 }
 

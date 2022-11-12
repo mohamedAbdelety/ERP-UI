@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ElementRef, Renderer, ViewChild, NgZone } from '@angular/core';
+import { Component, ViewEncapsulation, ElementRef, Renderer2, ViewChild, NgZone } from '@angular/core';
 import {
   Router,
   Event as RouterEvent,
@@ -9,18 +9,18 @@ import {
 } from '@angular/router';
 
 
-
 @Component({
   selector: 'layout',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './layout.template.html'
 })
 export class Layout {
+  public showMobileMenu: boolean = false;
   sidebarState: boolean = true;
-  @ViewChild('spinnerElement', {static: true}) spinnerElement: ElementRef;
-  @ViewChild('routerComponent', {static: true}) routerComponent: ElementRef;
+  @ViewChild('spinnerElement', { static: true }) spinnerElement: ElementRef;
+  @ViewChild('routerComponent', { static: true }) routerComponent: ElementRef;
 
-  constructor(private el: ElementRef, private renderer: Renderer, private router: Router, private ngZone: NgZone) {
+  constructor(private el: ElementRef, private renderer: Renderer2, router: Router, private ngZone: NgZone) {
     router.events.subscribe((event: RouterEvent) => {
       setTimeout(() => {
         this._navigationInterceptor(event);
@@ -38,12 +38,12 @@ export class Layout {
         // For simplicity we are going to turn opacity on / off
         // you could add/remove a class for more advanced styling
         // and enter/leave animation of the spinner
-        this.renderer.setElementStyle(
+        this.renderer.setStyle(
           this.spinnerElement.nativeElement,
           'opacity',
           '1'
         );
-        this.renderer.setElementStyle(
+        this.renderer.setStyle(
           this.routerComponent.nativeElement,
           'opacity',
           '0'
@@ -72,12 +72,12 @@ export class Layout {
       // For simplicity we are going to turn opacity on / off
       // you could add/remove a class for more advanced styling
       // and enter/leave animation of the spinner
-      this.renderer.setElementStyle(
+      this.renderer.setStyle(
         this.spinnerElement.nativeElement,
         'opacity',
         '0'
       );
-      this.renderer.setElementStyle(
+      this.renderer.setStyle(
         this.routerComponent.nativeElement,
         'opacity',
         '1'
@@ -86,13 +86,19 @@ export class Layout {
   }
 
   sidebarPosition(position): void {
-    let pos = position === 'Right' ? true : false;
-    this.renderer.setElementClass(this.el.nativeElement, 'sidebar-on-right', pos);
+    if (position === 'Right') {
+      this.renderer.addClass(this.el.nativeElement, 'sidebar-on-right');
+    } else {
+      this.renderer.removeClass(this.el.nativeElement, 'sidebar-on-right');
+    }
   }
 
   sidebarDisplay(display): void {
-    let _display = display === 'Hide' ? true : false;
-    this.renderer.setElementClass(this.el.nativeElement, 'sidebar-hidden', _display);
+    if (display === 'Hide') {
+      this.renderer.addClass(this.el.nativeElement, 'sidebar-hidden');
+    } else {
+      this.renderer.removeClass(this.el.nativeElement, 'sidebar-hidden');
+    }
   }
 
   openSidebar(): void {
@@ -102,11 +108,13 @@ export class Layout {
     let sidebarHeight = sidebar.offsetHeight + sidebarMarginTop + sidebarMarginBottom;
 
     if (this.sidebarState) {
-      this.renderer.setElementStyle(this.el.nativeElement
+      this.renderer.setStyle(this.el.nativeElement
         .querySelector('.content'), 'margin-top', sidebarHeight + 'px');
+      this.showMobileMenu = true;
     } else {
-      this.renderer.setElementStyle(this.el.nativeElement
+      this.renderer.setStyle(this.el.nativeElement
         .querySelector('.content'), 'margin-top', '0px');
+      this.showMobileMenu = false;
     }
 
     this.sidebarState = !this.sidebarState;
