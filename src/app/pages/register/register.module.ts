@@ -1,15 +1,15 @@
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AlertModule } from 'ngx-bootstrap/alert';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
 
-import { RegisterComponent } from './register.component';
-import { RegisterService } from './register.service';
-import { WidgsterModule } from '../../components/widgster/widgster.module';
+import {RegisterComponent} from './register.component';
+import {NewWidgetModule} from '../../layout/new-widget/widget.module';
+import {AlertModule} from 'ngx-bootstrap';
+import {RegisterService} from './register.service';
 
-export const routes: Routes = [
-  { path: '', component: RegisterComponent, pathMatch: 'full' }
+export const routes = [
+  {path: '', component: RegisterComponent, pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -20,11 +20,13 @@ export const routes: Routes = [
     CommonModule,
     FormsModule,
     RouterModule.forChild(routes),
-    WidgsterModule,
-    AlertModule
+    NewWidgetModule,
+    AlertModule.forRoot()
   ],
   providers: [
     RegisterService
   ]
 })
-export class RegisterModule { }
+export class RegisterModule {
+  static routes = routes;
+}

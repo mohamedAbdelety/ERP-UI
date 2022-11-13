@@ -1,40 +1,26 @@
-import { Component, ElementRef, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
-import { LoginService } from '../../pages/login/login.service';
+import { Component, ElementRef } from '@angular/core';
+import { Renderer2 } from '@angular/core';
+
+declare let jQuery: any;
 
 @Component({
   selector: '[sidebar]',
-  templateUrl: './sidebar.template.html',
-  styleUrls: ['./sidebar.component.scss']
+  templateUrl: './sidebar.template.html'
 })
-export class Sidebar implements OnInit, AfterViewInit {
+export class Sidebar {
   sidebarHeight: number = 0;
   sidebarMenu: any = 0;
 
-  public sidebarState: SidebarState = {
-    dashboardCollapsed: true,
-    ecommerceCollapsed: true,
-    coreCollapsed: true,
-    uiCollapsed: true,
-    formsCollapsed: true,
-    chartsCollapsed: true,
-    tablesCollapsed: true,
-    mapsCollapsed: true,
-    extraCollapsed: true,
-    levelsCollapsed: true
-  };
-
-  constructor(
-    private renderer: Renderer2,
-    private el: ElementRef,
-    private loginService: LoginService
-  ) {
-  }
-
-  public ngOnInit(): void {
+  constructor(private renderer: Renderer2, private el: ElementRef) {
   }
 
   ngAfterViewInit() {
     this.sidebarMenu = this.el.nativeElement.querySelector('#side-nav');
+    if (window.innerWidth > 768) {
+      setTimeout(() => {
+        jQuery(this.sidebarMenu).find('.accordion-group.active .accordion-body').collapse('show');
+      });
+    }
   }
 
   setSidebarHeight(event) {
@@ -69,6 +55,8 @@ export class Sidebar implements OnInit, AfterViewInit {
       .querySelector('.accordion-body');
     let collapsingMenu = this.sidebarMenu
       .querySelector('.accordion-group .accordion-body.collapse.show');
+    jQuery(collapsingMenu).collapse('hide');
+    jQuery(currentMenu).collapse('show');
     if (collapsingMenu && currentMenu !== collapsingMenu && window.innerWidth < 768) {
       let submenuHeight = 0;
       let submenuItems = collapsingMenu.querySelectorAll('li');
@@ -79,30 +67,10 @@ export class Sidebar implements OnInit, AfterViewInit {
     }
   }
 
-  sidebarBehavior(event: Event, key: keyof SidebarState) {
-    event.preventDefault();
+  sidebarBehavior(event) {
     this.setSidebarHeight(event);
-    Object.keys(this.sidebarState).forEach((k: keyof SidebarState) => {
-      this.sidebarState[k] = key === k ? !this.sidebarState[k] : true;
-    });
+    this.collapseSubMenu(event);
     this.renderer.setStyle(document
       .querySelector('.content'), 'margin-top', this.sidebarHeight + 'px');
   }
-
-  logout() {
-    this.loginService.logoutUser();
-  }
-}
-
-export interface SidebarState {
-  dashboardCollapsed: boolean;
-  ecommerceCollapsed: boolean;
-  coreCollapsed: boolean;
-  uiCollapsed: boolean;
-  formsCollapsed: boolean;
-  chartsCollapsed: boolean;
-  tablesCollapsed: boolean;
-  mapsCollapsed: boolean;
-  extraCollapsed: boolean;
-  levelsCollapsed: boolean;
 }

@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AlertModule } from 'ngx-bootstrap/alert';
+import { RouterModule } from '@angular/router';
 
 import { Login } from './login.component';
-import { WidgsterModule } from '../../components/widgster/widgster.module';
+import {NewWidgetModule} from '../../layout/new-widget/widget.module';
+import {AlertModule} from 'ngx-bootstrap';
 
-export const routes: Routes = [
+export const routes = [
   { path: '', component: Login, pathMatch: 'full' }
 ];
 
@@ -19,8 +19,10 @@ export const routes: Routes = [
     CommonModule,
     FormsModule,
     RouterModule.forChild(routes),
-    WidgsterModule,
-    AlertModule
+    NewWidgetModule,
+    AlertModule.forRoot()
   ]
 })
-export class LoginModule { }
+export class LoginModule {
+  static routes = routes;
+}
