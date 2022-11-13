@@ -5,12 +5,14 @@ html {
   min-height: 100%;
   font-size: $font-size-initial;
   position: relative;
+  direction: rtl;
 }
 
 body {
   overflow-x: hidden;
   color: $text-color;
   background-color: $body-bg;
+  text-align: right;
   //background: url("../../assets/img/bg-pattern.svg"),
   //  radial-gradient(farthest-side ellipse at 10% 0, #36455a 20%, #889caf);
   //background-attachment: fixed;

@@ -38,7 +38,7 @@ a:link {
   top: 0;
   color: $sidebar-color;
   z-index: 1;
-  margin-left: 15px;
+  margin-right: 15px;
   font-weight: 300;
 
   .settings {
@@ -68,8 +68,8 @@ a:link {
 
     i[class*="fi"] {
       width: 16px;
-      margin-right: 10px;
-      float: left;
+      margin-left: 10px;
+      float: right;
       line-height: 20px;
       font-size: 14px;
       opacity: 0.4;
@@ -131,7 +131,7 @@ a:link {
   .accordion-body {
     li a {
       padding: 7px 20px;
-      padding-left: 40px;
+      padding-right: 40px;
     }
   }
 
@@ -139,7 +139,7 @@ a:link {
     //second level menu
     li a {
       padding: 4px 20px;
-      padding-left: 50px;
+      padding-right: 50px;
 
       &:hover,
       &:focus {
@@ -179,6 +179,7 @@ a:link {
 .sidebar-labels {
   list-style: none;
   padding: 10px 20px;
+  text-align: right;
 
   > li {
     > a {
@@ -203,8 +204,8 @@ a:link {
       .fa-circle {
         font-size: 11px;
         vertical-align: 1px;
-        margin-left: 4px;
-        margin-right: 8px;
+        margin-right: 4px;
+        margin-left: 8px;
       }
 
       .circle-o {
@@ -225,15 +226,20 @@ a:link {
 
 .sidebar-alerts {
   .alert {
+    position: relative;
     font-size: $font-size-mini;
     margin-bottom: 0;
-    padding: $spacer/2 12px $spacer/2 20px;
+    padding: $spacer/2 20px $spacer/2 12px;
 
     .close {
       font-size: 16px;
       text-shadow: none;
       opacity: 1;
       color: rgba($sidebar-color, 0.9);
+      position: absolute;
+      left: -10px;
+      right: auto;
+      top: -3px;
     }
   }
 
@@ -247,8 +253,9 @@ a:link {
 }
 
 .sidebar-nav-title {
-  margin: 30px 0 20px 20px;
+  margin: 30px 20px 20px 0;
   font-weight: $font-weight-thin;
+  text-align: right;
 
   .action-link {
     color: rgba($sidebar-color, 0.85);
@@ -321,7 +328,7 @@ a:link {
 
 /*main content*/
 .wrap {
-  margin-left: $sidebar-width + 15px;
+  margin-right: $sidebar-width + 15px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -586,7 +593,8 @@ a:link {
   position: absolute;
   z-index: 1;
   top: 0;
-  right: 0;
+  left: 0 ;
+  right: auto !important;
   font-size: $font-size-sm;
   word-spacing: 1px;
 
