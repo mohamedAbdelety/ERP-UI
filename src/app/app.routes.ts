@@ -12,9 +12,6 @@ export const ROUTES: Routes = [{
   path: 'login', loadChildren: () => import('./pages/login/login.module').then(module => module.LoginModule)
 },
 {
-  path: 'register', loadChildren: () => import('./pages/register/register.module').then(module => module.RegisterModule)
-},
-{
   path: 'error', component: ErrorComponent
 },
 {

@@ -29,10 +29,10 @@ import { AppGuard } from './app.guard';
 import { AppInterceptor } from './app.interceptor';
 import { AppConfig } from './app.config';
 import { CancelLaunchToastComponent } from './pages/ui-elements/notifications/toasts/cancel-launch/cancel-launch-toast.component';
-import { RetryDestroyingToastComponent } from './pages/ui-elements/notifications/toasts/retry-destroying/retry-destroying-toast.component';
 import { UtilsModule } from './utils/utils-module/utils.module';
-import {SuccessToastComponent} from './pages/ui-elements/notifications/toasts/suceess/success-toast.component';
+import { SuccessToastComponent } from './pages/ui-elements/notifications/toasts/suceess/success-toast.component';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { RetryDestroyingToastComponent } from './pages/ui-elements/notifications/toasts/retry-destroying/retry-destroying-toast.component';
 
 const APP_PROVIDERS = [
   CheckAllService,
@@ -60,10 +60,10 @@ const APP_PROVIDERS = [
       echarts: () => import('echarts')
     }),
     RouterModule.forRoot(ROUTES, {
-    useHash: true,
-    preloadingStrategy: PreloadAllModules,
-    relativeLinkResolution: 'legacy'
-}),
+      useHash: true,
+      preloadingStrategy: PreloadAllModules,
+      relativeLinkResolution: 'legacy'
+    }),
     ButtonsModule.forRoot(),
     BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
