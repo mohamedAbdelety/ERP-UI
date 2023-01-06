@@ -12,15 +12,18 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
 import { LoaderModule } from '../../components/loader/loader.module';
 import { WidgsterModule } from '../../components/widgster/widgster.module';
 import { KindsComponent } from './kinds/kinds.component';
+import { KindAddEditComponent } from './kind-add-edit/kind-add-edit.component';
 
 export const routes = [
   { path: '', component: KindsComponent, pathMatch: 'full' },
-  // { path: 'management/:id', component: ProductEditComponent, pathMatch: 'full' },
+  { path: 'create', component: KindAddEditComponent, pathMatch: 'full' },
+  { path: ':id/edit', component: KindAddEditComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   declarations: [
-    KindsComponent
+    KindsComponent,
+    KindAddEditComponent
   ],
   imports: [
     FormsModule,

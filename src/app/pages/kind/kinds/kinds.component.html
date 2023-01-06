@@ -34,7 +34,7 @@
         <ngx-datatable-column name="الإجراءات">
             <ng-template let-row="row" ngx-datatable-cell-template>
                 <div class="btn-toolbar">
-                    <button class="btn btn-xs btn-info" [routerLink]="['/app/ecommerce/management/' + row.id]" routerLinkActive="router-link-active">
+                    <button class="btn btn-xs btn-info" [routerLink]="['/app/kinds/' + row.id+'/edit']" routerLinkActive="router-link-active">
             <span class="d-none d-md-inline-block">تعديل</span>
             <span class="d-md-none"><i class='la la-edit'></i></span>
           </button>
@@ -44,7 +44,7 @@
           </button>
                     <ng-template #deletePopover let-id="id">
                         <div class="popover-title popover-header">
-                            <div class="px-5">هل موافق لحذف هذا العنصر؟</div>
+                            <div class="px-5">هل متأكد من حذف هذا العنصر؟</div>
                         </div>
                         <div class="popover-product-body d-flex justify-content-center">
                             <div class="btn-toolbar">

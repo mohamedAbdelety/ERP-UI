@@ -35,7 +35,6 @@ export class KindsComponent implements OnInit {
     this.router.navigate(['/app/kinds/create']);
   }
 
-
   delete(id: number) {
     this.kindService.delete(id).subscribe(
       (res: any) => {
