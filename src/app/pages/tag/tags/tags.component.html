@@ -1,10 +1,10 @@
 <div class="page-top-line">
-    <h1 class="page-title"> إدارة - <span class="fw-semi-bold">الانواع</span></h1>
+    <h1 class="page-title"> إدارة - <span class="fw-semi-bold">العلامات</span></h1>
 </div>
-<section widgster [reloadControl]="false" [fullscreenControl]="false" [collapseControl]="false" [loading]="!kinds">
-    <h5 *widgsterTitle>قائمة الانواع</h5>
-    <button (click)="createNewKind()" class="btn btn-success mb-3">إنشاء النوع</button>
-    <ngx-datatable class="table table-striped table-hover" [rows]="kinds" [columnMode]="columnMode.force" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="10">
+<section widgster [reloadControl]="false" [fullscreenControl]="false" [collapseControl]="false" [loading]="!tags">
+    <h5 *widgsterTitle>قائمة العلامات</h5>
+    <button (click)="createNewTag()" class="btn btn-success mb-3">إنشاء العلامة</button>
+    <ngx-datatable class="table table-striped table-hover" [rows]="tags" [columnMode]="columnMode.force" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="10">
 
         <ngx-datatable-column name="الكود" cellClass="width-100" headerClass="width-100">
             <ng-template let-row="row" ngx-datatable-cell-template>
@@ -12,9 +12,21 @@
             </ng-template>
         </ngx-datatable-column>
 
-        <ngx-datatable-column name="الاسم" cellClass="width-100" headerClass="width-100">
+        <ngx-datatable-column name="اللقب" cellClass="width-100" headerClass="width-100">
             <ng-template let-row="row" ngx-datatable-cell-template>
-                {{row.name}}
+                <div style="  word-wrap: break-word;"> {{row.title}} </div>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="المسار" cellClass="width-100" headerClass="width-100">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <div style="  word-wrap: break-word;"> {{row.path}} </div>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="نوع القيمة" cellClass="width-100" headerClass="width-100">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.type}}
             </ng-template>
         </ngx-datatable-column>
 
@@ -30,11 +42,24 @@
             </ng-template>
         </ngx-datatable-column>
 
+        <ngx-datatable-column name="النوع" cellClass="width-100" headerClass="width-100">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.kindName}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="المنصة" cellClass="width-100" headerClass="width-100">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <div style="  word-wrap: break-word;"> {{row.opcTitle}}</div>
+            </ng-template>
+        </ngx-datatable-column>
+
+
 
         <ngx-datatable-column name="الإجراءات">
             <ng-template let-row="row" ngx-datatable-cell-template>
                 <div class="btn-toolbar">
-                    <button class="btn btn-xs btn-info" [routerLink]="['/app/kinds/' + row.id+'/edit']" routerLinkActive="router-link-active">
+                    <button class="btn btn-xs btn-info" [routerLink]="['/app/tags/' + row.id+'/edit']" routerLinkActive="router-link-active">
             <span class="d-none d-md-inline-block">تعديل</span>
             <span class="d-md-none"><i class='la la-edit'></i></span>
           </button>
