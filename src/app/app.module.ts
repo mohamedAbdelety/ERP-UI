@@ -32,6 +32,7 @@ import { UtilsModule } from './utils/utils-module/utils.module';
 import { SuccessToastComponent } from './pages/ui-elements/notifications/toasts/suceess/success-toast.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { RetryDestroyingToastComponent } from './pages/ui-elements/notifications/toasts/retry-destroying/retry-destroying-toast.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 const APP_PROVIDERS = [
   CheckAllService,
@@ -80,6 +81,7 @@ const APP_PROVIDERS = [
     UtilsModule
   ],
   providers: [
+    NgxSpinnerService,
     APP_PROVIDERS,
     {
       provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true

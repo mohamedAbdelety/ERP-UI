@@ -68,6 +68,7 @@
     "ngx-markdown-editor": "3.3.3",
     "ngx-mask": "^11.1.5",
     "ngx-sortablejs": "11.1.0",
+    "ngx-spinner": "^15.0.1",
     "ngx-swiper-wrapper": "^10.0.0",
     "ngx-toastr": "13.2.1",
     "ngx-trend": "6.1.1",
