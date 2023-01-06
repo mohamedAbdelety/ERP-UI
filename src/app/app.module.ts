@@ -19,7 +19,6 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
-
 import { ROUTES } from './app.routes';
 import { CheckAllService } from './layout/utils/services/check-all.service';
 import { AppComponent } from './app.component';

@@ -1,8 +1,10 @@
-import {AppConfig} from '../../app.config';
-import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
-import {JwtHelperService} from '@auth0/angular-jwt';
-import {Injectable} from '@angular/core';
+import { AppConfig } from '../../app.config';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 const jwt = new JwtHelperService();
 
@@ -18,6 +20,10 @@ export class LoginService {
     private router: Router,
   ) {
     this.config = appConfig.getConfig();
+  }
+
+  login(model: any): Observable<any> {
+    return this.http.post(environment.serverUrl + 'accounts/login', model);
   }
 
   get isFetching() {
@@ -46,7 +52,7 @@ export class LoginService {
     const date = new Date().getTime() / 1000;
     try {
       data = jwt.decodeToken(token);
-    } catch(e) {
+    } catch (e) {
       this.router.navigate(['/login']);
     }
     if (!data) return;
