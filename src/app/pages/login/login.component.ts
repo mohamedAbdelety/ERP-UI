@@ -2,14 +2,13 @@ import { Component, HostBinding } from '@angular/core';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ConstEnum } from 'src/app/core/enums/const.enum';
 
 @Component({
   selector: 'login',
   templateUrl: './login.template.html',
 })
 export class Login {
-
-  _isFetching: boolean = false;
 
   @HostBinding('class') classes = 'auth-page app';
 
@@ -37,7 +36,8 @@ export class Login {
   login() {
     this.loginService.login(this.loginForm.value).subscribe(
       (res: any) => {
-        this.router.navigate(['/app/main/visits']);
+        localStorage.setItem(ConstEnum.token, res.token);
+        this.router.navigate(['/app']);
       });
   }
 }

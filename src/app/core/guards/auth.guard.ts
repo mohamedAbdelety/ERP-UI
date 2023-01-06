@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { CredentialService } from '../services';
+import { CredentialService } from '../credential.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
 
     if (this.credentialService.isLoggedIn() && this.credentialService.checkTokenExpire()) {
       if (next.data.roles && next.data.roles.indexOf(this.credentialService.getUser().role) === -1) {
-        this.route.navigate(['/home/sales/add']);
+        this.route.navigate(['/app']);
         return false;
       }
       return true;

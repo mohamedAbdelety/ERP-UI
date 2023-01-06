@@ -1,7 +1,7 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CredentialService } from '../services';
 import { Injectable } from '@angular/core';
+import { CredentialService } from '../credential.service';
 
 @Injectable({
   providedIn: 'root'

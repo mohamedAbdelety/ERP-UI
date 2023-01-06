@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, Renderer2, ElementRef, ChangeDetectionStrategy } from '@angular/core';
-import {LoginService} from '../../pages/login/login.service';
+import { CredentialService } from 'src/app/core/credential.service';
+import { LoginService } from '../../pages/login/login.service';
 
 @Component({
   selector: '[navbar]',
@@ -21,8 +22,8 @@ export class Navbar {
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
-    private loginService: LoginService
-  ) {}
+    private credentialService: CredentialService
+  ) { }
 
   sidebarPosition(position): void {
     this.changeSidebarPosition.emit(position);
@@ -53,6 +54,6 @@ export class Navbar {
   }
 
   logout() {
-    this.loginService.logoutUser();
+    this.credentialService.logout();
   }
 }

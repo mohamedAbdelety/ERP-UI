@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { RouterModule, PreloadAllModules } from '@angular/router';
+import { RouterModule, PreloadAllModules, UrlSerializer } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
@@ -23,21 +23,24 @@ import { ROUTES } from './app.routes';
 import { CheckAllService } from './layout/utils/services/check-all.service';
 import { AppComponent } from './app.component';
 import { ErrorComponent } from './pages/error/error.component';
-import { LoginService } from './pages/login/login.service';
-import { AppGuard } from './app.guard';
-import { AppInterceptor } from './app.interceptor';
 import { AppConfig } from './app.config';
 import { CancelLaunchToastComponent } from './pages/ui-elements/notifications/toasts/cancel-launch/cancel-launch-toast.component';
-import { UtilsModule } from './utils/utils-module/utils.module';
+import { UtilsModule } from './core/utils.module';
 import { SuccessToastComponent } from './pages/ui-elements/notifications/toasts/suceess/success-toast.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { RetryDestroyingToastComponent } from './pages/ui-elements/notifications/toasts/retry-destroying/retry-destroying-toast.component';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { AuthGuard } from './core/guards/auth.guard';
+import { LoginGuard } from './core/guards/login.guard';
+import { LowerCaseUrlSerializer } from './core/helpers/lower-case-url-serializer';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
 const APP_PROVIDERS = [
   CheckAllService,
-  LoginService,
-  AppGuard,
+  LoginGuard,
+  AuthGuard,
   AppConfig
 ];
 
@@ -55,6 +58,7 @@ const APP_PROVIDERS = [
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    NgxSpinnerModule,
     ToastrModule.forRoot(),
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
@@ -83,8 +87,12 @@ const APP_PROVIDERS = [
   providers: [
     NgxSpinnerService,
     APP_PROVIDERS,
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     {
-      provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true
+      provide: UrlSerializer,
+      useClass: LowerCaseUrlSerializer
     }
   ]
 })

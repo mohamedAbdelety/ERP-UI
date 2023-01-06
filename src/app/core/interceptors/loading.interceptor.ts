@@ -2,7 +2,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { finalize } from 'rxjs/operators';
-import { BusyService } from '../services';
+import { BusyHelper } from '../helpers/busy.helper';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { BusyService } from '../services';
 
 export class LoadingInterceptor implements HttpInterceptor {
   constructor(
-    private busyService: BusyService
+    private busyService: BusyHelper
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

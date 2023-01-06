@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
+import { CredentialService } from 'src/app/core/credential.service';
 import { LoginService } from '../../pages/login/login.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class Sidebar implements OnInit, AfterViewInit {
 
   public sidebarState: SidebarState = {
     dashboardCollapsed: true,
-    ecommerceCollapsed: true,
+    opcSettingsCollapsed: true,
     coreCollapsed: true,
     uiCollapsed: true,
     formsCollapsed: true,
@@ -24,6 +25,7 @@ export class Sidebar implements OnInit, AfterViewInit {
   };
 
   constructor(
+    private credentialService: CredentialService,
     private renderer: Renderer2,
     private el: ElementRef,
     private loginService: LoginService
@@ -90,13 +92,13 @@ export class Sidebar implements OnInit, AfterViewInit {
   }
 
   logout() {
-    this.loginService.logoutUser();
+    this.credentialService.logout();
   }
 }
 
 export interface SidebarState {
   dashboardCollapsed: boolean;
-  ecommerceCollapsed: boolean;
+  opcSettingsCollapsed: boolean;
   coreCollapsed: boolean;
   uiCollapsed: boolean;
   formsCollapsed: boolean;
