@@ -15,31 +15,29 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-md-2">الوصف</label>
+            <label class="col-md-2">الوظيفة</label>
             <div class="col-md-5">
-                <textarea rows="3" class="form-control input-transparent" formControlName="description"></textarea>
+                <ng-select id="default-select" [searchable]="true" [items]="['Admin']" formControlName="role" bindLabel="text" bindValue="id">
+                </ng-select>
+                <p *ngIf="errorHandling('role', 'required') && formSubmitted" class="error">
+                    هذا الحقل مطلوب
+                </p>
             </div>
         </div>
 
-        <div class="form-group row">
-            <label class="col-md-2">الملاحظات</label>
-            <div class="col-md-5">
-                <textarea rows="3" class="form-control input-transparent" formControlName="notes"></textarea>
-            </div>
-        </div>
 
         <div class="btn-toolbar">
             <button *ngIf="isNew; else updateBtn" class="btn btn-success" type="button" (click)="save()">
-                حفظ
-            </button>
+        حفظ
+      </button>
             <ng-template #updateBtn>
                 <button class="btn btn-success" type="button" (click)="update()">
-                    تحديث
-                </button>
+          تحديث
+        </button>
             </ng-template>
             <button class="btn btn-default" (click)="goBack()" type="button">
-                عودة
-            </button>
+        عودة
+      </button>
         </div>
     </form>
 </section>

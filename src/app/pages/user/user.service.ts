@@ -38,7 +38,6 @@ export class UserService {
 export interface User {
   id: number;
   name: string;
-  description: string;
-  notes: string;
+  role: string;
 }
 

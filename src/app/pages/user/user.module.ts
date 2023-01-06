@@ -13,6 +13,7 @@ import { LoaderModule } from '../../components/loader/loader.module';
 import { WidgsterModule } from '../../components/widgster/widgster.module';
 import { UsersComponent } from './users/users.component';
 import { UserAddEditComponent } from './user-add-edit/user-add-edit.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 export const routes = [
   { path: '', component: UsersComponent, pathMatch: 'full' },
@@ -35,6 +36,7 @@ export const routes = [
     LoaderModule,
     WidgsterModule,
     ButtonsModule,
+    NgSelectModule,
     BsDropdownModule,
     CollapseModule,
     AlertModule,

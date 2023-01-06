@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
 import { UserService } from '../user.service';
 import { ToastrService } from 'ngx-toastr';
+import validator from 'validator';
 
 @Component({
   selector: 'user-add-edit',
@@ -11,7 +12,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UserAddEditComponent implements OnInit {
 
-  // isNew: boolean = true;
   formSubmitted: boolean;
   form: FormGroup;
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
@@ -30,8 +30,7 @@ export class UserAddEditComponent implements OnInit {
     this.form = this.formBuilder.group({
       id: [],
       name: ['', Validators.required],
-      description: [''],
-      notes: ['']
+      role: ['Admin', Validators.required]
     });
   }
 

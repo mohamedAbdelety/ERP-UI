@@ -11,7 +11,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class OpcAddEditComponent implements OnInit {
 
-  // isNew: boolean = true;
   formSubmitted: boolean;
   form: FormGroup;
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
