@@ -8,7 +8,7 @@ import { ConstEnum } from 'src/app/core/enums/const.enum';
   selector: 'login',
   templateUrl: './login.template.html',
 })
-export class Login {
+export class LoginComponent {
 
   @HostBinding('class') classes = 'auth-page app';
 

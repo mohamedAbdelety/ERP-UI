@@ -4,16 +4,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AlertModule } from 'ngx-bootstrap/alert';
 
-import { Login } from './login.component';
+import { LoginComponent } from './login.component';
 import { WidgsterModule } from '../../components/widgster/widgster.module';
 
 export const routes = [
-  { path: '', component: Login, pathMatch: 'full' }
+  { path: '', component: LoginComponent, pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
-    Login
+    LoginComponent
   ],
   imports: [
     CommonModule,
