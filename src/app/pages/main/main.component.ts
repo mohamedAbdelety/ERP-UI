@@ -13,7 +13,7 @@ export class MainComponent implements OnInit {
   sPPopeReelSpeed: number;
   moisture: number;
   basisWeight: number;
-
+  sheetBreak: number;
   sPTopLayerConsistencySet: number;
   aCTopLayerConsistencyActual: number;
   aCBottomLayerConsistencyActual: number;
@@ -46,6 +46,10 @@ export class MainComponent implements OnInit {
     this.getOne(TagConstant.SPTopLayerStockFlowSet);
     this.getOne(TagConstant.ACBottomLayerStockFlowActual);
     this.getOne(TagConstant.SPBottomLayerStockFlowSet);
+    this.getOne(TagConstant.SPPopeReelSpeed);
+    this.getOne(TagConstant.Moisture);
+    this.getOne(TagConstant.BasisWeight);
+    this.getOne(TagConstant.SheetBreak);
 
     this.signalRService.startConnection();
     this.receiveData();
@@ -64,54 +68,57 @@ export class MainComponent implements OnInit {
     });
   }
 
-  setValue(path: string, decimal: number) {
+  setValue(path: string, decimalValue: number) {
 
     switch (path) {
       case TagConstant.SPPopeReelSpeed:
-        this.sPPopeReelSpeed = decimal;
+        this.sPPopeReelSpeed = decimalValue;
         break;
       case TagConstant.Moisture:
-        this.moisture = decimal;
+        this.moisture = decimalValue;
         break;
       case TagConstant.BasisWeight:
-        this.basisWeight = decimal;
+        this.basisWeight = decimalValue;
+        break;
+      case TagConstant.SheetBreak:
+        this.sheetBreak = decimalValue;
         break;
 
       case TagConstant.SPTopLayerConsistencySet:
-        this.sPTopLayerConsistencySet = decimal;
+        this.sPTopLayerConsistencySet = decimalValue;
         break;
       case TagConstant.ACTopLayerConsistencyActual:
-        this.aCTopLayerConsistencyActual = decimal;
+        this.aCTopLayerConsistencyActual = decimalValue;
         break;
       case TagConstant.ACBottomLayerConsistencyActual:
-        this.aCBottomLayerConsistencyActual = decimal;
+        this.aCBottomLayerConsistencyActual = decimalValue;
         break;
       case TagConstant.SPBottomLayerConsistency:
-        this.sPBottomLayerConsistency = decimal;
+        this.sPBottomLayerConsistency = decimalValue;
         break;
       case TagConstant.ACHomogeneityConsistencyActual:
-        this.aCHomogeneityConsistencyActual = decimal;
+        this.aCHomogeneityConsistencyActual = decimalValue;
         break;
       case TagConstant.SPHomogeneityConsistencySet:
-        this.sPHomogeneityConsistencySet = decimal;
+        this.sPHomogeneityConsistencySet = decimalValue;
         break;
       case TagConstant.ACSteamActual:
-        this.aCSteamActual = decimal;
+        this.aCSteamActual = decimalValue;
         break;
       case TagConstant.SPSteamSet:
-        this.sPSteamSet = decimal;
+        this.sPSteamSet = decimalValue;
         break;
       case TagConstant.ACTopLayerStockFlowActual:
-        this.aCTopLayerStockFlowActual = decimal;
+        this.aCTopLayerStockFlowActual = decimalValue;
         break;
       case TagConstant.SPTopLayerStockFlowSet:
-        this.sPTopLayerStockFlowSet = decimal;
+        this.sPTopLayerStockFlowSet = decimalValue;
         break;
       case TagConstant.ACBottomLayerStockFlowActual:
-        this.aCBottomLayerStockFlowActual = decimal;
+        this.aCBottomLayerStockFlowActual = decimalValue;
         break;
       case TagConstant.SPBottomLayerStockFlowSet:
-        this.sPBottomLayerStockFlowSet = decimal;
+        this.sPBottomLayerStockFlowSet = decimalValue;
         break;
 
       default:
