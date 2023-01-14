@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import * as signalR from "@microsoft/signalr"
+import * as signalR from "@microsoft/signalr";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignalrService {
 
-  private hubConnection: signalR.HubConnection
+  public hubConnection: signalR.HubConnection;
+
   public startConnection = () => {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://localhost:5001/chart')
+      .withUrl(environment.baseUrl + 'opchub')
       .build();
     this.hubConnection
       .start()
@@ -17,10 +19,5 @@ export class SignalrService {
       .catch(err => console.log('Error while starting connection: ' + err))
   }
 
-  public addTransferChartDataListener = () => {
-    this.hubConnection.on('transferchartdata', (data) => {
-      this.data = data;
-      console.log(data);
-    });
-  }
+
 }

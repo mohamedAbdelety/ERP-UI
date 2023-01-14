@@ -3,7 +3,7 @@
 </header>
 <ul id="side-nav" class="side-nav">
     <li [routerLinkActive]="['active']">
-        <a routerLink="main"><i class="fi flaticon-user"></i> <span class="name">الرئيسية</span></a>
+        <a routerLink="main"><i class="fi flaticon-home"></i> <span class="name">الرئيسية</span></a>
     </li>
     <li class="accordion-group panel" [routerLinkActive]="['active']">
         <a (click)="sidebarBehavior($event, 'opcSettingsCollapsed')" class="accordion-toggle" aria-controls="commerce-collapse" [class.open]="!sidebarState.opcSettingsCollapsed">

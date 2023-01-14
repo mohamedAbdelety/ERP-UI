@@ -1,1 +1,219 @@
-hi
+<div class="analytics-page">
+    <!-- <h1 class="page-title">Analytics
+        <small>
+      <small>Company performance</small>
+        </small>
+    </h1> -->
+
+
+
+    <div class="sides-wrapper">
+        <div class="analytics-side">
+
+
+            <div class="row">
+
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <div class="mb-5">
+                        <section widgster class="h-100">
+                            <h4 *widgsterTitle class='d-flex align-items-center big-stat-title'>
+                                <span class="circle  mr-sm" [ngStyle]="{ 'font-size': '6px' }"></span> <span class="fw-normal ml-xs">Top
+                  Layer Consistency </span>
+                            </h4>
+                            <div class="px-4">
+                                <div class="d-flex">
+                                    <div class="w-50 py-3 pr-2">
+                                        <div class="d-flex align-items-start">
+                                            <h6>{{sPTopLayerConsistencySet}}</h6>
+                                            <i *ngIf="sPTopLayerConsistencySet != aCTopLayerConsistencyActual" class="la la-arrow-right fs-xl ml-sm text-{{sPTopLayerConsistencySet > aCTopLayerConsistencyActual ? 'success' : 'danger'}} rotate-{{sPTopLayerConsistencySet > aCTopLayerConsistencyActual ? '315' : '45'}}"></i>
+                                        </div>
+                                        <p class="text-muted mb-0 mr">
+                                            <small>Set Point</small>
+                                        </p>
+                                    </div>
+                                    <div class="w-50 py-3 pl-2">
+                                        <div class="d-flex align-items-start">
+                                            <h6>{{aCTopLayerConsistencyActual}}</h6>
+                                            <i *ngIf="sPTopLayerConsistencySet != aCTopLayerConsistencyActual" class="la la-arrow-right fs-xl ml-sm text-{{aCTopLayerConsistencyActual > sPTopLayerConsistencySet ? 'success' : 'danger'}} rotate-{{aCTopLayerConsistencyActual > sPTopLayerConsistencySet ? '315' : '45'}}"></i>
+                                        </div>
+                                        <p class="text-muted mb-0 mr">
+                                            <small>Actual</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <div class="mb-5">
+                        <section widgster class="h-100">
+                            <h4 *widgsterTitle class='d-flex align-items-center big-stat-title'>
+                                <span class="circle  mr-sm" [ngStyle]="{ 'font-size': '6px' }"></span> <span class="fw-normal ml-xs">Bottom Layer Consistency </span>
+                            </h4>
+                            <div class="px-4">
+                                <div class="d-flex">
+                                    <div class="w-50 py-3 pr-2">
+                                        <div class="d-flex align-items-start">
+                                            <h6>{{sPBottomLayerConsistency}}</h6>
+                                            <i *ngIf="sPBottomLayerConsistency != aCBottomLayerConsistencyActual" class="la la-arrow-right fs-xl ml-sm text-{{sPBottomLayerConsistency > aCBottomLayerConsistencyActual ? 'success' : 'danger'}} rotate-{{sPBottomLayerConsistency > aCBottomLayerConsistencyActual ? '315' : '45'}}"></i>
+                                        </div>
+                                        <p class="text-muted mb-0 mr">
+                                            <small>Set Point</small>
+                                        </p>
+                                    </div>
+                                    <div class="w-50 py-3 pl-2">
+                                        <div class="d-flex align-items-start">
+                                            <h6>{{aCBottomLayerConsistencyActual}}</h6>
+                                            <i *ngIf="sPBottomLayerConsistency != aCBottomLayerConsistencyActual" class="la la-arrow-right fs-xl ml-sm text-{{aCBottomLayerConsistencyActual > sPBottomLayerConsistency ? 'success' : 'danger'}} rotate-{{aCBottomLayerConsistencyActual > sPBottomLayerConsistency ? '315' : '45'}}"></i>
+                                        </div>
+                                        <p class="text-muted mb-0 mr">
+                                            <small>Actual</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <div class="mb-5">
+                        <section widgster class="h-100">
+                            <h4 *widgsterTitle class='d-flex align-items-center big-stat-title'>
+                                <span class="circle  mr-sm" [ngStyle]="{ 'font-size': '6px' }"></span> <span class="fw-normal ml-xs">Homogeneity
+                  Consistency </span>
+                            </h4>
+                            <div class="px-4">
+                                <div class="d-flex">
+                                    <div class="w-50 py-3 pr-2">
+                                        <div class="d-flex align-items-start">
+                                            <h6>{{sPHomogeneityConsistencySet}}</h6>
+                                            <i *ngIf="sPHomogeneityConsistencySet != aCHomogeneityConsistencyActual" class="la la-arrow-right fs-xl ml-sm text-{{sPHomogeneityConsistencySet > aCHomogeneityConsistencyActual ? 'success' : 'danger'}} rotate-{{sPHomogeneityConsistencySet > aCHomogeneityConsistencyActual ? '315' : '45'}}"></i>
+                                        </div>
+                                        <p class="text-muted mb-0 mr">
+                                            <small>Set Point</small>
+                                        </p>
+                                    </div>
+                                    <div class="w-50 py-3 pl-2">
+                                        <div class="d-flex align-items-start">
+                                            <h6>{{aCHomogeneityConsistencyActual}}</h6>
+                                            <i *ngIf="sPHomogeneityConsistencySet != aCHomogeneityConsistencyActual" class="la la-arrow-right fs-xl ml-sm text-{{aCHomogeneityConsistencyActual > sPHomogeneityConsistencySet ? 'success' : 'danger'}} rotate-{{aCHomogeneityConsistencyActual > sPHomogeneityConsistencySet ? '315' : '45'}}"></i>
+                                        </div>
+                                        <p class="text-muted mb-0 mr">
+                                            <small>Actual</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <div class="mb-5">
+                        <section widgster class="h-100">
+                            <h4 *widgsterTitle class='d-flex align-items-center big-stat-title'>
+                                <span class="circle  mr-sm" [ngStyle]="{ 'font-size': '6px' }"></span> <span class="fw-normal ml-xs">Steam
+                </span>
+                            </h4>
+                            <div class="px-4">
+                                <div class="d-flex">
+                                    <div class="w-50 py-3 pr-2">
+                                        <div class="d-flex align-items-start">
+                                            <h6>{{sPSteamSet}}</h6>
+                                            <i *ngIf="sPSteamSet != aCSteamActual" class="la la-arrow-right fs-xl ml-sm text-{{sPSteamSet > aCSteamActual ? 'success' : 'danger'}} rotate-{{sPSteamSet > aCSteamActual ? '315' : '45'}}"></i>
+                                        </div>
+                                        <p class="text-muted mb-0 mr">
+                                            <small>Set Point</small>
+                                        </p>
+                                    </div>
+                                    <div class="w-50 py-3 pl-2">
+                                        <div class="d-flex align-items-start">
+                                            <h6>{{aCSteamActual}}</h6>
+                                            <i *ngIf="sPSteamSet != aCSteamActual" class="la la-arrow-right fs-xl ml-sm text-{{aCSteamActual > sPSteamSet ? 'success' : 'danger'}} rotate-{{aCSteamActual > sPSteamSet ? '315' : '45'}}"></i>
+                                        </div>
+                                        <p class="text-muted mb-0 mr">
+                                            <small>Actual</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <div class="mb-5">
+                        <section widgster class="h-100">
+                            <h4 *widgsterTitle class='d-flex align-items-center big-stat-title'>
+                                <span class="circle  mr-sm" [ngStyle]="{ 'font-size': '6px' }"></span> <span class="fw-normal ml-xs">Top
+                  Layer
+                  Stock Flow </span>
+                            </h4>
+                            <div class="px-4">
+                                <div class="d-flex">
+                                    <div class="w-50 py-3 pr-2">
+                                        <div class="d-flex align-items-start">
+                                            <h6>{{sPTopLayerStockFlowSet}}</h6>
+                                            <i *ngIf="sPTopLayerStockFlowSet != aCTopLayerStockFlowActual" class="la la-arrow-right fs-xl ml-sm text-{{sPTopLayerStockFlowSet > aCTopLayerStockFlowActual ? 'success' : 'danger'}} rotate-{{sPTopLayerStockFlowSet > aCTopLayerStockFlowActual ? '315' : '45'}}"></i>
+                                        </div>
+                                        <p class="text-muted mb-0 mr">
+                                            <small>Set Point</small>
+                                        </p>
+                                    </div>
+                                    <div class="w-50 py-3 pl-2">
+                                        <div class="d-flex align-items-start">
+                                            <h6>{{aCTopLayerStockFlowActual}}</h6>
+                                            <i *ngIf="sPTopLayerStockFlowSet != aCTopLayerStockFlowActual" class="la la-arrow-right fs-xl ml-sm text-{{aCTopLayerStockFlowActual > sPTopLayerStockFlowSet ? 'success' : 'danger'}} rotate-{{aCTopLayerStockFlowActual > sPTopLayerStockFlowSet ? '315' : '45'}}"></i>
+                                        </div>
+                                        <p class="text-muted mb-0 mr">
+                                            <small>Actual</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-6 col-xl-4">
+                    <div class="mb-5">
+                        <section widgster class="h-100">
+                            <h4 *widgsterTitle class='d-flex align-items-center big-stat-title'>
+                                <span class="circle  mr-sm" [ngStyle]="{ 'font-size': '6px' }"></span> <span class="fw-normal ml-xs">Bottom
+                  Layer Stock Flow </span>
+                            </h4>
+                            <div class="px-4">
+                                <div class="d-flex">
+                                    <div class="w-50 py-3 pr-2">
+                                        <div class="d-flex align-items-start">
+                                            <h6>{{sPBottomLayerStockFlowSet}}</h6>
+                                            <i *ngIf="sPBottomLayerStockFlowSet != aCBottomLayerStockFlowActual" class="la la-arrow-right fs-xl ml-sm text-{{sPBottomLayerStockFlowSet > aCBottomLayerStockFlowActual ? 'success' : 'danger'}} rotate-{{sPBottomLayerStockFlowSet > aCBottomLayerStockFlowActual ? '315' : '45'}}"></i>
+                                        </div>
+                                        <p class="text-muted mb-0 mr">
+                                            <small>Set Point</small>
+                                        </p>
+                                    </div>
+                                    <div class="w-50 py-3 pl-2">
+                                        <div class="d-flex align-items-start">
+                                            <h6>{{aCBottomLayerStockFlowActual}}</h6>
+                                            <i *ngIf="sPBottomLayerStockFlowSet != aCBottomLayerStockFlowActual" class="la la-arrow-right fs-xl ml-sm text-{{aCBottomLayerStockFlowActual > sPBottomLayerStockFlowSet ? 'success' : 'danger'}} rotate-{{aCBottomLayerStockFlowActual > sPBottomLayerStockFlowSet ? '315' : '45'}}"></i>
+                                        </div>
+                                        <p class="text-muted mb-0 mr">
+                                            <small>Actual</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
