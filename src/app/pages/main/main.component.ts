@@ -1,8 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MainService } from './main.service';
+import { Reading } from './reading.model';
 import { SignalrService } from './signalr.service';
 import { TagConstant } from './tag.constant';
-
+import {
+  ChartComponent,
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexXAxis,
+  ApexDataLabels,
+  ApexTitleSubtitle,
+  ApexStroke,
+  ApexGrid
+} from "ng-apexcharts";
 @Component({
   selector: 'main',
   templateUrl: './main.template.html',
@@ -28,11 +38,15 @@ export class MainComponent implements OnInit {
   sPTopLayerStockFlowSet: number;
   aCBottomLayerStockFlowActual: number;
   sPBottomLayerStockFlowSet: number;
+  actuals: Reading[];
+  actualsDates: Date[];
+
+  @ViewChild("chart") chart: ChartComponent;
+  public actualChartOptions: any;
 
   constructor(private mainService: MainService,
     public signalRService: SignalrService
   ) {
-
   }
 
   ngOnInit(): void {
@@ -54,6 +68,7 @@ export class MainComponent implements OnInit {
     this.getOne(TagConstant.SheetBreak);
     this.getOne(TagConstant.ScannerDirection);
     this.getOne(TagConstant.ProductName);
+    // this.getActual();
 
     this.signalRService.startConnection();
     this.receiveData();
@@ -64,6 +79,102 @@ export class MainComponent implements OnInit {
       (res: any) => {
         this.setValue(path, res.decimalValue, res.stringValue);
       });
+  }
+
+  getActual() {
+    this.mainService.getList({
+      paths: [
+        TagConstant.ACBottomLayerConsistencyActual,
+        TagConstant.ACBottomLayerStockFlowActual,
+        TagConstant.ACHomogeneityConsistencyActual,
+        TagConstant.ACSteamActual,
+        TagConstant.ACTopLayerConsistencyActual,
+        TagConstant.ACTopLayerStockFlowActual
+      ]
+    }).subscribe(
+      (res: Reading[]) => {
+        this.actuals = res;
+        this.actualsDates = this.actuals.map(item => item.date).filter((value, index, self) => self.indexOf(value) === index);
+        // this.actualChartOptions.xaxis.categories = this.actualsDates;
+        // this.actualChartOptions.series.push(
+        //   {
+        //     name: 'Bottom Layer Consistency',
+        //     data: this.actuals.filter(d => d.path == TagConstant.ACSteamActual).map(a => a.decimalValue)
+        //   });
+
+        this.actualChartOptions = {
+          grid: {
+            borderColor: '#1C2531'
+          },
+          series: [
+            {
+              name: 'Bottom Layer Consistency',
+              data: this.actuals.filter(d => d.path == TagConstant.ACBottomLayerConsistencyActual).map(a => ({ x: a.date, y: a.decimalValue }))
+            },
+            {
+              name: 'Bottom Layer Stock Flow',
+              data: this.actuals.filter(d => d.path == TagConstant.ACBottomLayerStockFlowActual).map(a => ({ x: a.date, y: a.decimalValue }))
+            }
+          ],
+          colors: ['#4ebfbb', '#FF8253', '#FDD468'],
+          chart: {
+            type: 'line',
+            height: '280px',
+            background: 'transparent',
+            toolbar: {
+              show: false
+            }
+          },
+          stroke: {
+            width: 2
+          },
+          legend: {
+            show: false
+          },
+          xaxis: {
+            type: 'datetime',
+            axisBorder: {
+              show: false,
+              color: '#fff'
+            },
+            axisTicks: {
+              show: false
+            },
+            labels: {
+              style: {
+                colors: '#fff'
+              }
+            }
+          },
+          yaxis: {
+            axisBorder: {
+              show: false,
+              color: '#fff',
+            },
+            axisTicks: {
+              show: false
+            },
+            labels: {
+              style: {
+                colors: '#fff'
+              }
+            },
+            splitLine: {
+              show: false
+            }
+          },
+          tooltip: {
+            enabled: true,
+            x: {
+              format: "dd/MM/yy HH:mm:ss"
+            }
+          }
+        };
+
+        this.actualChartOptions.series[0].data.push({ x: new Date(), y: 5 })
+
+      });
+
   }
 
   public receiveData = () => {
@@ -93,7 +204,6 @@ export class MainComponent implements OnInit {
       case TagConstant.ProductName:
         this.productName = stringValue;
         break;
-
       case TagConstant.SPTopLayerConsistencySet:
         this.sPTopLayerConsistencySet = decimalValue;
         break;
@@ -136,5 +246,16 @@ export class MainComponent implements OnInit {
         break;
     }
   }
-
 }
+
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  dataLabels: ApexDataLabels;
+  grid: ApexGrid;
+  stroke: ApexStroke;
+  title: ApexTitleSubtitle;
+};
+

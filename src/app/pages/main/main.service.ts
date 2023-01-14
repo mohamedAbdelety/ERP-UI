@@ -22,4 +22,8 @@ export class MainService {
   getOne(model: any): Observable<any> {
     return this.http.post(environment.serverUrl + 'readings/one', model);
   }
+
+  getList(model: any): Observable<any> {
+    return this.http.post(environment.serverUrl + 'readings/list', model);
+  }
 }

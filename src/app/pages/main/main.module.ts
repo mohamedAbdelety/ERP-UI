@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { MainComponent } from './main.component';
 import { WidgsterModule } from '../../components/widgster/widgster.module';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 export const routes = [
   { path: '', component: MainComponent, pathMatch: 'full' }
@@ -17,6 +18,7 @@ export const routes = [
   imports: [
     CommonModule,
     FormsModule,
+    NgApexchartsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     WidgsterModule,
