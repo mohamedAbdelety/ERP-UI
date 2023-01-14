@@ -14,6 +14,8 @@ export class MainComponent implements OnInit {
   moisture: number;
   basisWeight: number;
   sheetBreak: number;
+  scannerDirection: number;
+  productName: string;
   sPTopLayerConsistencySet: number;
   aCTopLayerConsistencyActual: number;
   aCBottomLayerConsistencyActual: number;
@@ -50,6 +52,8 @@ export class MainComponent implements OnInit {
     this.getOne(TagConstant.Moisture);
     this.getOne(TagConstant.BasisWeight);
     this.getOne(TagConstant.SheetBreak);
+    this.getOne(TagConstant.ScannerDirection);
+    this.getOne(TagConstant.ProductName);
 
     this.signalRService.startConnection();
     this.receiveData();
@@ -58,17 +62,17 @@ export class MainComponent implements OnInit {
   getOne(path: string) {
     this.mainService.getOne({ path: path }).subscribe(
       (res: any) => {
-        this.setValue(path, res.decimalValue)
+        this.setValue(path, res.decimalValue, res.stringValue);
       });
   }
 
   public receiveData = () => {
     this.signalRService.hubConnection.on('SendToUI', (data) => {
-      this.setValue(data.path, data.decimalValue)
+      this.setValue(data.path, data.decimalValue, data.stringValue)
     });
   }
 
-  setValue(path: string, decimalValue: number) {
+  setValue(path: string, decimalValue: number, stringValue: string) {
 
     switch (path) {
       case TagConstant.SPPopeReelSpeed:
@@ -82,6 +86,12 @@ export class MainComponent implements OnInit {
         break;
       case TagConstant.SheetBreak:
         this.sheetBreak = decimalValue;
+        break;
+      case TagConstant.ScannerDirection:
+        this.scannerDirection = decimalValue;
+        break;
+      case TagConstant.ProductName:
+        this.productName = stringValue;
         break;
 
       case TagConstant.SPTopLayerConsistencySet:

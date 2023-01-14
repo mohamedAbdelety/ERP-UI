@@ -29,6 +29,7 @@ export enum TagConstant {
   ScannerDirection = 'PM1.CONTROLMEAS.BW11.FrameDynamic.ScanDirection',
   SheetBreak = 'Applications.Application_PM1MD01.SheetBreak_OPC',
   Moisture = 'Applications.Application_PM1MD01.Moisture_OPC',
-  BasisWeight = 'Applications.Application_PM1MD01.BasisWeight_OPC'
+  BasisWeight = 'Applications.Application_PM1MD01.BasisWeight_OPC',
+  ProductName = 'PM1.SQCS.GD.ActiveGradeName'
 
 }
