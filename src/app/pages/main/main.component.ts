@@ -51,20 +51,20 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOne(TagConstant.SPTopLayerConsistencySet);
-    this.getOne(TagConstant.ACTopLayerConsistencyActual);
-    this.getOne(TagConstant.ACBottomLayerConsistencyActual);
+    // this.getOne(TagConstant.ACTopLayerConsistencyActual);
+    // this.getOne(TagConstant.ACBottomLayerConsistencyActual);
     this.getOne(TagConstant.SPBottomLayerConsistency);
-    this.getOne(TagConstant.ACHomogeneityConsistencyActual);
-    this.getOne(TagConstant.SPHomogeneityConsistencySet);
-    this.getOne(TagConstant.ACSteamActual);
-    this.getOne(TagConstant.SPSteamSet);
-    this.getOne(TagConstant.ACTopLayerStockFlowActual);
-    this.getOne(TagConstant.SPTopLayerStockFlowSet);
-    this.getOne(TagConstant.ACBottomLayerStockFlowActual);
-    this.getOne(TagConstant.SPBottomLayerStockFlowSet);
-    this.getOne(TagConstant.SPPopeReelSpeed);
-    this.getOne(TagConstant.Moisture);
-    this.getOne(TagConstant.BasisWeight);
+    // this.getOne(TagConstant.ACHomogeneityConsistencyActual);
+    // this.getOne(TagConstant.SPHomogeneityConsistencySet);
+    // this.getOne(TagConstant.ACSteamActual);
+    // this.getOne(TagConstant.SPSteamSet);
+    // this.getOne(TagConstant.ACTopLayerStockFlowActual);
+    // this.getOne(TagConstant.SPTopLayerStockFlowSet);
+    // this.getOne(TagConstant.ACBottomLayerStockFlowActual);
+    // this.getOne(TagConstant.SPBottomLayerStockFlowSet);
+    // this.getOne(TagConstant.SPPopeReelSpeed);
+    // this.getOne(TagConstant.Moisture);
+    // this.getOne(TagConstant.BasisWeight);
     this.getOne(TagConstant.SheetBreak);
     this.getOne(TagConstant.ScannerDirection);
     this.getOne(TagConstant.ProductName);
@@ -240,9 +240,7 @@ export class MainComponent implements OnInit {
       case TagConstant.SPBottomLayerStockFlowSet:
         this.sPBottomLayerStockFlowSet = decimalValue;
         break;
-
       default:
-        console.log("No such day exists!");
         break;
     }
   }
