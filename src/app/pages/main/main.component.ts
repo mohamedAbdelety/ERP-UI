@@ -19,7 +19,7 @@ import {
   styleUrls: ['./main.style.scss']
 })
 export class MainComponent implements OnInit {
-  // Mohamed Abdelaty => from local
+  // Mohamed Abdelaty => from github
   sPPopeReelSpeed: number;
   moisture: number;
   basisWeight: number;
