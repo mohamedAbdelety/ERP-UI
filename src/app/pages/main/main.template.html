@@ -14,14 +14,14 @@
                 <div class="col-lg-3 col-md-6 col-12">
                     <section widgster [optionsControl]="false" [reloadControl]="false" [fullscreenControl]="false" [collapseControl]="false" [closeControl]="false" bodyClass="mt-0 clearfix">
                         <div class="row flex-nowrap">
-                            <div class="col-3">
+                            <div class="col-2">
                                 <span class="widget-icon">
                   <i class="fi flaticon-newspaper text-primary"></i>
                 </span>
                             </div>
-                            <div class="col-9">
+                            <div class="col-10">
                                 <h6 class="m-0">المنتج</h6>
-                                <p class="h4 m-0 fw-normal">{{productName}}</p>
+                                <p class="h5 m-0 fw-normal">{{productName}}</p>
                             </div>
                         </div>
                     </section>
@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-9">
                                 <h6 class="m-0">الجرام</h6>
-                                <p class="h2 m-0 fw-normal">{{basisWeight | number : '1.3-3' }}</p>
+                                <p class="h2 m-0 fw-normal">{{basisWeight | number : '1.2-2' }}</p>
                             </div>
                         </div>
                     </section>
@@ -230,14 +230,14 @@
                     <div class="mb-5">
                         <section widgster class="h-100">
                             <h4 *widgsterTitle class='d-flex align-items-center big-stat-title'>
-                                <span class="circle  mr-sm" [ngStyle]="{ 'font-size': '6px' }"></span> <span class="fw-normal ml-xs">Steam
+                                <span class="circle  mr-sm" [ngStyle]="{ 'font-size': '6px' }"></span> <span class="fw-normal ml-xs">البخار
                 </span>
                             </h4>
                             <div class="px-4">
                                 <div class="d-flex">
                                     <div class="w-50 py-3 pr-2">
                                         <div class="d-flex align-items-start">
-                                            <h6>{{sPSteamSet}}</h6>
+                                            <h6>{{sPSteamSet | number : '1.2-2'}}</h6>
                                             <i *ngIf="sPSteamSet != aCSteamActual" class="la la-arrow-right fs-xl ml-sm text-{{sPSteamSet > aCSteamActual ? 'success' : 'danger'}} rotate-{{sPSteamSet > aCSteamActual ? '315' : '45'}}"></i>
                                         </div>
                                         <p class="text-muted mb-0 mr">

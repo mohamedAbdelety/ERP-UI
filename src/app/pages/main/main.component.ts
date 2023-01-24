@@ -68,7 +68,9 @@ export class MainComponent implements OnInit {
     this.getOne(TagConstant.SheetBreak);
     this.getOne(TagConstant.ScannerDirection);
     this.getOne(TagConstant.ProductName);
-    // this.getActual();
+
+  // chart api
+  this.getActual();
 
     this.signalRService.startConnection();
     this.receiveData();
@@ -81,6 +83,8 @@ export class MainComponent implements OnInit {
       });
   }
 
+
+  //chart api 
   getActual() {
     this.mainService.getList({
       paths: [
@@ -93,86 +97,84 @@ export class MainComponent implements OnInit {
       ]
     }).subscribe(
       (res: Reading[]) => {
-        this.actuals = res;
-        this.actualsDates = this.actuals.map(item => item.date).filter((value, index, self) => self.indexOf(value) === index);
+       // console.log(res); ///////////////////////////////////////
+        // this.actuals = res;
+        // this.actualsDates = this.actuals.map(item => item.date).filter((value, index, self) => self.indexOf(value) === index);
         // this.actualChartOptions.xaxis.categories = this.actualsDates;
         // this.actualChartOptions.series.push(
         //   {
         //     name: 'Bottom Layer Consistency',
         //     data: this.actuals.filter(d => d.path == TagConstant.ACSteamActual).map(a => a.decimalValue)
         //   });
-
-        this.actualChartOptions = {
-          grid: {
-            borderColor: '#1C2531'
-          },
-          series: [
-            {
-              name: 'Bottom Layer Consistency',
-              data: this.actuals.filter(d => d.path == TagConstant.ACBottomLayerConsistencyActual).map(a => ({ x: a.date, y: a.decimalValue }))
-            },
-            {
-              name: 'Bottom Layer Stock Flow',
-              data: this.actuals.filter(d => d.path == TagConstant.ACBottomLayerStockFlowActual).map(a => ({ x: a.date, y: a.decimalValue }))
-            }
-          ],
-          colors: ['#4ebfbb', '#FF8253', '#FDD468'],
-          chart: {
-            type: 'line',
-            height: '280px',
-            background: 'transparent',
-            toolbar: {
-              show: false
-            }
-          },
-          stroke: {
-            width: 2
-          },
-          legend: {
-            show: false
-          },
-          xaxis: {
-            type: 'datetime',
-            axisBorder: {
-              show: false,
-              color: '#fff'
-            },
-            axisTicks: {
-              show: false
-            },
-            labels: {
-              style: {
-                colors: '#fff'
-              }
-            }
-          },
-          yaxis: {
-            axisBorder: {
-              show: false,
-              color: '#fff',
-            },
-            axisTicks: {
-              show: false
-            },
-            labels: {
-              style: {
-                colors: '#fff'
-              }
-            },
-            splitLine: {
-              show: false
-            }
-          },
-          tooltip: {
-            enabled: true,
-            x: {
-              format: "dd/MM/yy HH:mm:ss"
-            }
-          }
-        };
-
-        this.actualChartOptions.series[0].data.push({ x: new Date(), y: 5 })
-
+        // this.actualChartOptions = {
+        //   grid: {
+        //     borderColor: '#1C2531'
+        //   },
+        //   series: [
+        //     {
+        //       name: 'Bottom Layer Consistency',
+        //       data: this.actuals.filter(d => d.path == TagConstant.ACBottomLayerConsistencyActual).map(a => ({ x: a.date, y: a.decimalValue }))
+        //     },
+        //     {
+        //       name: 'Bottom Layer Stock Flow',
+        //       data: this.actuals.filter(d => d.path == TagConstant.ACBottomLayerStockFlowActual).map(a => ({ x: a.date, y: a.decimalValue }))
+        //     }
+        //   ],
+        //   colors: ['#4ebfbb', '#FF8253', '#FDD468'],
+        //   chart: {
+        //     type: 'line',
+        //     height: '280px',
+        //     background: 'transparent',
+        //     toolbar: {
+        //       show: false
+        //     }
+        //   },
+        //   stroke: {
+        //     width: 2
+        //   },
+        //   legend: {
+        //     show: false
+        //   },
+        //   xaxis: {
+        //     type: 'datetime',
+        //     axisBorder: {
+        //       show: false,
+        //       color: '#fff'
+        //     },
+        //     axisTicks: {
+        //       show: false
+        //     },
+        //     labels: {
+        //       style: {
+        //         colors: '#fff'
+        //       }
+        //     }
+        //   },
+        //   yaxis: {
+        //     axisBorder: {
+        //       show: false,
+        //       color: '#fff',
+        //     },
+        //     axisTicks: {
+        //       show: false
+        //     },
+        //     labels: {
+        //       style: {
+        //         colors: '#fff'
+        //       }
+        //     },
+        //     splitLine: {
+        //       show: false
+        //     }
+        //   },
+        //   tooltip: {
+        //     enabled: true,
+        //     x: {
+        //       format: "dd/MM/yy HH:mm:ss"
+        //     }
+        //   }
+        // };
+        // this.actualChartOptions.series[0].data.push({ x: new Date(), y: 5 })
       });
 
   }
